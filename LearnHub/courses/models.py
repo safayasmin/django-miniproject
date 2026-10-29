@@ -25,3 +25,9 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        permissions=[
+            ("can_publish_course","can publish course"),
+            ("can_manage_enrollments","can manage enrollments"),
+        ]

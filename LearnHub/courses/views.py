@@ -12,6 +12,13 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Course
 
+from django.contrib.auth.decorators import permission_required
+
+
+# Ithu login cheytha user-in courses list kaanikkunnu.
+# Admin: ella courses-um kaanum.
+# Instructor: swantham courses mathram kaanum.
+# Student: ippol ella courses-um browse cheyyam.
 
 @login_required
 def course_list(request):
@@ -38,3 +45,8 @@ def course_list(request):
         f"Welcome {role}! Courses: {', '.join(course_names) if course_names else 'No courses available.'}"
     )
 
+
+
+@permission_required('courses.can_publish_course')
+def publish_course(request):
+    return HttpResponse('you have a permission to publish a course !')
