@@ -37,7 +37,7 @@ def login_view(request):
             login(request,user)
 
             if user.is_superuser or user.groups.filter(name='Admin').exists():
-                return redirect('/Admin/')
+                return redirect('/admin/')
 
             elif user.groups.filter(name='Instructor').exists():
                 return redirect('/dashboard/')

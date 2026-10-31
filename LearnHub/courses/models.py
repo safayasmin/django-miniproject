@@ -13,7 +13,7 @@ class Course(models.Model):
     blank=True
     )
 
-    
+  
     title=models.CharField(max_length=200)
     description=models.TextField()
     instructor=models.ForeignKey(
